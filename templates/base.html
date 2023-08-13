@@ -1,0 +1,27 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Website</title>
+    <!-- Add your CSS and JavaScript file references here -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <div class="content-wrapper">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    {% include 'footer.html' %}
+    
+
+    <!-- Add your JavaScript file references here -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>

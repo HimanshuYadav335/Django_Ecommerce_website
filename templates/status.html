@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container" style="margin-top: 100px;">
+        {% if order %}
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" class="col">Image</th>
+                        <th scope="col" class="col">Product Quantity</th>
+                        <th scope="col" class="col">Order Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in order %}
+                    <tr>
+                        <td class="col">
+                            {% for j in product %}
+                            {% if j.pid == i.pid %}
+                            <img src="{% static 'images/' %}{{ j.pimage }}" alt="..." class="img-fluid"
+                                style="height: 50px; width: 50px;">
+                            {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td class="col">{{ i.pnumber }}</td>
+                        <td class="col">
+                            {% if i.order_status == 0 %}
+                            <p>pending</p>
+                            {% else %}
+                            <p>complete</p>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <h1>You have no orders</h1>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+{% endblock %}

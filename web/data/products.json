@@ -1,0 +1,111 @@
+[
+    {
+        "pid":28,
+        "pimage":"C:\\venv\\Ecommerce\\static\\images\\head1.webp",
+        "pdetail":"Wireless over-ear headphones with noise cancellation.",
+        "pprice":1999.99,
+        "ptitle":"headphone"
+    },
+    {
+        "pid":29,
+        "pimage":"C:\\venv\\Ecommerce\\static\\images\\head2.webp",
+        "pdetail": "Compact in-ear headphones with enhanced bass.",
+        "pprice":2999.99,
+        "ptitle":"headphone"
+
+    },{
+        "pid":30,
+        "pimage":"C:\\venv\\Ecommerce\\static\\images\\head3.webp",
+        "pdetail":"Premium over-ear headphones with hi-fi audio.",
+        "pprice":4999.99,
+        "ptitle":"headphone"
+
+    },{
+        "pid":31,
+        "pimage":"C:\\venv\\Ecommerce\\static\\images\\head4.webp",
+        "pdetail": "Comfortable on-ear headphones with built-in microphone.",
+        "pprice":6999.99,
+        "ptitle":"headphone"
+
+    },{
+        "pid":32,
+        "pimage":"C:\\venv\\Ecommerce\\static\\images\\head5.webp",
+        "pdetail": "Classic timepiece with genuine leather strap.",
+        "pprice":6000.99,
+        "ptitle":"headphone"
+
+        
+    },{
+        "pid":33,
+        "pimage":"C:\\venv\\Ecommerce\\static\\images\\head6.jpg",
+        "pdetail":"Foldable on-ear headphones with deep bass response.",
+        "pprice":9999.99,
+        "ptitle":"headphone"
+
+    },
+    {
+        "pid":34,
+        "pimage":"C:\\venv\\Ecommerce\\static\\images\\head7.jpg",
+        "pdetail":"Lightweight in-ear headphones with tangle-free cable.",
+        "pprice":6999.99,
+        "ptitle":"headphone"
+
+    },
+    {
+        "pid":35,
+        "pimage":"C:\\venv\\Ecommerce\\static\\images\\head8.jpg",
+        "pdetail":"Durable headphones with adjustable headband.",
+        "pprice":3999.99,
+        "ptitle":"headphone"
+
+    },
+    {
+        "pid":36,
+        "pimage":"C:\\venv\\Ecommerce\\static\\images\\head9.webp",
+        "pdetail":"Lightweight in-ear headphones with tangle-free cable.",
+        "pprice":2999.99,
+        "ptitle":"headphone"
+
+    },
+    {
+        "pid":37,
+        "pimage":"C:\\venv\\Ecommerce\\static\\images\\head10.webp",
+        "pdetail":"Premium over-ear headphones with hi-fi audio.",
+        "pprice":7000.00,
+        "ptitle":"headphone"
+
+    },
+    {
+        "pid":38,
+        "pimage":"C:\\venv\\Ecommerce\\static\\images\\head11.webp",
+        "pdetail":"Lightweight in-ear headphones with tangle-free cable.",
+        "pprice":3999.99,
+        "ptitle":"headphone"
+
+    },
+    {
+        "pid":39,
+        "pimage":"C:\\venv\\Ecommerce\\static\\images\\head12.webp",
+        "pdetail": "Compact in-ear headphones with enhanced bass.",
+        "pprice":2222.99,
+        "ptitle":"headphone"
+
+    },
+    {
+        "pid":40,
+        "pimage":"C:\\venv\\Ecommerce\\static\\images\\head14.webp",
+        "pdetail": "Compact in-ear headphones with enhanced bass.",
+        "pprice":2222.99,
+        "ptitle":"headphone"
+
+    },
+    {
+        "pid":41,
+        "pimage":"C:\\venv\\Ecommerce\\static\\images\\head15.webp",
+        "pdetail": "Compact in-ear headphones with enhanced bass.",
+        "pprice":2222.99,
+        "ptitle":"headphone"
+
+    }
+
+]
