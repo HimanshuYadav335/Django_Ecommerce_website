@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2*nj0vl+17gh=#-!8mj32li08^@u!(5gw*ozxfyk7!12=z(#jm'
+SECRET_KEY = '***This Seceret Key will automatically generate when you will create your Project'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -82,9 +82,9 @@ WSGI_APPLICATION = 'Ecommerce.wsgi.application'
 DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.mysql',
-         'NAME':   'ecommerce',
+         'NAME':   'Your_Database_Name',
          'USER':   'root',
-         'PASSWORD': '18072003',
+         'PASSWORD': 'Your_database_Password',
          'HOST':    'localhost',
          'PORT':    '3306'
      }
@@ -138,10 +138,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'hy158003@gmail.com'
-EMAIL_HOST_PASSWORD = 'eqyppgdhtadpggli'
+EMAIL_HOST_USER = 'Your_Email'
+EMAIL_HOST_PASSWORD = 'Your_Email_Passowrd'
 EMAIL_USE_TLS = True
 
 
-RAZORPAY_API_KEY='rzp_test_816c98EFuVJQYi'
-RAZORPAY_API_SECRET_KEY='KBrGxHks6TK1ZTfjZ0xUiuDI'
+RAZORPAY_API_KEY='YOUR RAZORPAY_API_KEY'
+RAZORPAY_API_SECRET_KEY='YOUR_RAZORPAY_API_SECRET_KEY'
