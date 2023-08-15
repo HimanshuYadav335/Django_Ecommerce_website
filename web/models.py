@@ -4,7 +4,8 @@ from django.db import models
 class  Visitor(models.Model):
     ename=models.CharField(max_length=20,default=None)
     eemail=models.EmailField(max_length=30)
-    epass=models.IntegerField()
+  
+    epass=models.TextField(max_length=10)
     eimage=models.ImageField()
     
     class Meta:

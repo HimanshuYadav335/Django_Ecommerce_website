@@ -8,7 +8,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <script src="https://code.jquery.com/jquery-3.7.0.js"
         integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 
@@ -41,8 +40,8 @@
                 <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4">
                     <input type="number" name="quantity" class="quantity" value="{{ i.pnumber }}" min="1" max="5">
                 </div>
-                <a href="{% url 'delete_cart' i.pid %}" onclick="return"  ><button class="btn btn-primary" type="button">Delete item</button></a>
-                <a href="{% url 'confirm_order' i.pid %}">confirm order</a>
+                <a href="{% url 'delete_cart' i.pid %}" onclick="return" id="delete_cart" ><button class="btn btn-primary" type="button">Delete item</button></a>
+                <a href="{% url 'confirm_order' i.pid %}"><button class="btn btn-primary" type="button">confirm order </button></a>
                 <!-- <button id="rzp-button1" type="button" class="btn btn-primary rzp-button1" data-price="{{ i.pprice }}" data>Pay with Razorpay</button> -->
                 <button type="button" class="btn btn-primary razorpay-button" data-product-id="{{ i.pid }}" data-price="{{ i.pprice }}">Pay with Razorpay</button>
 
@@ -53,7 +52,30 @@
     {% else %}
     <h1 style="margin-top: 100px;">NO item in cart</h1>
     {% endif %}
-</body>
+<!-- <script>
+    $(document).ready(function(){
+        $('#delete_cart').click(function(event){
+            event.preventDefault(); 
+            var deleteLink = $(this);
+
+            $.ajax({
+                type:"GET",
+                url:$(this).attr('href'),
+                data:null,
+                dataType:"Json",
+                success:function(){
+                var cartItem = deleteLink.closest('.update-cart-form');
+                cartItem.remove();
+                    console.log("deleted")
+                },
+                error:function(){
+                    console.log("action not performend")
+                }
+            })
+        })
+    })
+</script> -->
+
 <script>
     $(document).ready(function () {
         $(".update-cart-form .quantity").on("input", function () {
@@ -163,7 +185,6 @@
 </script>
 
 
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-
+</body>
 </html>
 {% endblock %}

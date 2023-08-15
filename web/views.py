@@ -8,6 +8,8 @@ from django.shortcuts import redirect
 from .utils import sent_mail_to_client
 from django.http import HttpResponse,JsonResponse
 from django.contrib.auth.hashers import check_password
+from django.contrib.auth.hashers import make_password
+
 import json
 import razorpay
 from Ecommerce.settings import RAZORPAY_API_KEY,RAZORPAY_API_SECRET_KEY
@@ -93,14 +95,15 @@ def send_mail_on_signup(request):
     else:
      try:
       for id in saved_pass:
-        if id.epass==int(user_pass):
+        if id.epass==user_pass:
           print(id.epass)
           return render(request,'signup.html',{'error':"Password Already taken "})
       if (user_pass==user_pass2):
        print(user_image)
+      #  user_pass=make_password(user_pass)
        userpresent=Visitor.objects.create(eemail=user_email,epass=user_pass,eimage=user_image,ename=user_name)
        userpresent.save()
-      #  sent_mail_to_client(user_email,user_name,user_message)
+       sent_mail_to_client(user_email,user_name,user_message)
       
        return redirect('http://127.0.0.1:8000/home/')
      except Exception as e:
@@ -148,9 +151,7 @@ def send_mail_on_login(request):
                     try:sent_mail_to_client(user_email,user_name,user_message)
                     except:return redirect('http://127.0.0.1:8000/home/')
 
-                    # return redirect('http://127.0.0.1:8000/home/')
-              error_message = 'Invalid email or password'
-              return render(request, 'login.html',{'error_message':error_message})
+              return redirect('http://127.0.0.1:8000/home/')
             except:
             # Password does not match for any user
              error_message = 'Invalid email or password'
@@ -161,7 +162,7 @@ def send_mail_on_login(request):
             error_message = 'Invalid email or password'
             # return render(request, 'login.html', {'error_message': error_message})
             print("no match")
-            return render(request, 'login.html')
+            return render(request, 'login.html',{'error_message':error_message})
 
     else:
         # Render the login form
@@ -193,15 +194,22 @@ def product_detail(request,id):
    
    try:
        cart_detail=Cartdetail.objects.get(pid=id,userid=password)
+       return JsonResponse({"response":"success"},status=200)
+
    except:
-       pass
+       cart_detail=Cartdetail.objects.create(pid=id,pimage=product.pimage,pdetail=product.pdetail,pprice=product.pprice, ptitle=product.ptitle,pnumber=1,userid=password )
+       cart_detail.save()
+       return JsonResponse({"response":"success"},status=200)
+
     
-   if cart_detail:
-         return render(request,'cart.html',{"product":get_all_product,"fix_price":fix_price,"user_name":user_name.ename})
-   else:
-     cart_detail=Cartdetail.objects.create(pid=id,pimage=product.pimage,pdetail=product.pdetail,pprice=product.pprice, ptitle=product.ptitle,pnumber=1,userid=password )
-    #  return render(request,'cart.html',{"product":get_all_product,"fix_price":fix_price,"user_name":user_name.ename})
-     return redirect("http://127.0.0.1:8000/cart")
+  #  if cart_detail:
+  #        return render(request,'cart.html',{"product":get_all_product,"fix_price":fix_price,"user_name":user_name.ename})
+  #  else:
+  #    cart_detail=Cartdetail.objects.create(pid=id,pimage=product.pimage,pdetail=product.pdetail,pprice=product.pprice, ptitle=product.ptitle,pnumber=1,userid=password )
+  #   #  return render(request,'cart.html',{"product":get_all_product,"fix_price":fix_price,"user_name":user_name.ename})
+  #   #  return redirect("http://127.0.0.1:8000/cart")
+  #    return JsonResponse({"response":"success"},status=200)
+
  else:
       return render(request,'login.html')
 
@@ -293,17 +301,23 @@ def order_status(request):
   return render(request,'status.html',{"order":order,"product":product})
 
 
+
 def contact(request):
   if request.method=="POST":
     user_email=request.POST.get('owner_email')
+    user_email2=request.POST.get('email')
     user_name=request.POST.get('name')
     user_message=request.POST.get('message')
-    sent_mail_to_client(user_email,user_name,user_message)
-    print("ok",user_email,user_name,user_message)
-    return redirect('http://127.0.0.1:8000/home/')
+    user_message=user_message+f'\t{user_email2}'
+    try:
+      sent_mail_to_client(user_email,user_name,user_message)
+      return redirect("http://127.0.0.1:8000/home/")
+    except:
+      return HttpResponse("server Error")
 
   else:
     return render(request,'contact.html')
+
 
 
 def generate_razorpay_order(request, productID):
